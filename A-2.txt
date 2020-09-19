@@ -1,0 +1,15 @@
+We know maximum number non-zero elements in a lower triangular matrix of n rows is given by
+n*(n+1)/2.
+Leaving the 0s of upper triangle , the remaining elements are stored in a 1d array row wise .
+Hence upto to a given row i , number of elements is = (i-1)((i-1)+1)/2=(i)(i-1)/2 elements.
+In the given row , number of the column is directly given by j.
+
+Since matrix is lower triangular , non zero elements are only for when i>=j
+
+
+Hence , Address formula for  given a i,j is given by 
+When(i>=j)
+Address of Aij in B given by  (i)(i-1)/2 +j 
+
+For zero part of A , relation between I and j is 
+j>i

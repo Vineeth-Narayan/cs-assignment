@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+    struct node
+    {
+        int data;
+        struct node *next;
+    };
+    
+    struct node* add(struct node *p)
+    {
+        struct node *temp, *nextnode;
+        nextnode = (struct node*)malloc(sizeof(struct node));
+        printf("enter value");
+        scanf("%d",&nextnode->data);
+        if(p==0)
+        {
+          p=nextnode;
+            
+        }
+        else
+        {
+            temp=p;
+            while(temp->next!=0)
+            {
+                temp=temp->next;
+            }
+            temp->next=nextnode;
+        }
+        
+        return p;
+    }
+    
+    int length(struct node *p)
+{
+    struct node *temp;
+    temp=p;
+    int count=0;
+    while(temp!=0)
+    {
+        temp=temp->next;
+        count++;
+    }
+    return count;
+}
+
+int main()
+{
+    int n=0; struct node *p;
+    while(n!=3)
+    {
+    printf("to add element to linked list click 1 , to find length click 2, 3 to exit");
+    scanf("%d",&n);
+    
+    if(n==1)
+    {
+        p=add(p);
+    }
+    else if(n==2)
+    {
+        printf("Lenght of linked list = %d",length(p));
+    }
+    }
+}
+

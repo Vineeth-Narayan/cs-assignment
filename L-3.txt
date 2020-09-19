@@ -1,0 +1,86 @@
+#include <stdio.h>
+
+#include <stdlib.h>
+    struct node {
+        int data;
+        struct node *next ;
+    };
+
+struct node* merge(struct node *head1,struct node *head2)
+{
+    struct node *tempx,*tempy,*s;
+    tempx=head1;
+    tempy=head2;
+    s=tempy->next;
+    while(s!=0 && tempx->next!=0)
+    {
+        tempy->next=tempx->next;
+        tempx->next=tempy;
+        
+        tempx=tempy->next;
+        tempy=s;
+        s=s->next;
+    }
+    if(s!=0)
+    {
+        tempx->next=tempy;
+    }
+    else 
+    {
+        tempy->next=tempx->next;
+        tempx->next=tempy;
+    }
+    return head1;
+}
+
+struct node* cr(struct node *head)
+{
+    struct node *temp , *nextnode;
+    int n;
+    head=0;
+    printf("how many nodes should linkedlist have initially?");
+    scanf("%d",&n);
+    printf("enter the values");
+    for(int i=0;i<n;i++)
+    {
+        nextnode = (struct node*)malloc(sizeof(struct node));
+        
+        scanf("%d",&nextnode->data);
+        nextnode->next=0;
+        if(head==0)
+        {
+            head=temp=nextnode;
+        }
+        else
+        {
+            temp->next=nextnode;
+            temp=nextnode;
+        }
+    }
+    return head;
+}
+    
+  void display(struct node *head) 
+  {
+      struct node *a;
+      a=head;
+            while(a!=0)
+            {
+                printf("%d ",a->data);   
+                a=a->next;
+        
+            }   
+  }
+int main()
+{
+    //initialize the ll
+
+
+    struct node *head1 , *head2;
+    head1=cr(head1);
+    head2=cr(head2);
+    
+    head1=merge(head1,head2);
+    
+    display(head1);
+}
